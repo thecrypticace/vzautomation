@@ -9,28 +9,28 @@ import AppKit
 
 // MARK: - Simulating the keyboard
 extension VZAutomator {
-  public func type(_ str: String) async {
-    await press(keys: Key.from(str))
+  public func type(_ str: String) async throws {
+    try await press(keys: Key.from(str))
   }
 
-  public func press(keys: [Key]) async {
+  public func press(keys: [Key]) async throws {
     for key in keys {
-      await press(key: key)
+      try await press(key: key)
     }
   }
 
-  public func press(key: Key, times: Int = 1) async {
+  public func press(key: Key, times: Int = 1) async throws {
     for _ in 0..<times {
       await view.hold(key: key)
       await view.release(key: key)
     }
   }
 
-  public func hold(key: Key) async {
+  public func hold(key: Key) async throws {
     await view.hold(key: key)
   }
 
-  public func release(key: Key) async {
+  public func release(key: Key) async throws {
     await view.release(key: key)
   }
 }
