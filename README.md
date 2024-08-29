@@ -2,7 +2,7 @@
 
 This is an app that showcases how to automate a VZVirtualMachine.
 
-I plan on making this installable via Swift PM once more of the APIs are stable and throught out but for now good ol' copy & paste is required. All APIs for automating the VM are located under the `VZAutomator` directory and are attached to the `VZAutomator` actor.
+I plan on making this installable via Swift PM once more of the APIs are stable and thought out but for now good ol' copy & paste is required. All APIs for automating the VM are located under the `VZAutomator` directory and are attached to the `VZAutomator` actor.
 
 PRs welcome!
 
