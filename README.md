@@ -22,7 +22,7 @@ vmView.virtualMachine = myVm
 
 // Add it to your window
 let myWindow = NSWindow()
-myWindow.contentView!.addSubview(view)
+myWindow.contentView!.addSubview(vmView)
 
 // Create an automator
 let automator = VZAutomator(vmView)
