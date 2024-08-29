@@ -3,19 +3,45 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		05AAFCF82C811F1E00DE7819 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 05AAFCF72C811F1D00DE7819 /* LICENSE */; };
+		05AAFCFA2C811F4C00DE7819 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 05AAFCF92C811F4900DE7819 /* README.md */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		05E4322D2C6EFE98002F193F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 05E431F92C6EB40B002F193F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 05E432002C6EB40B002F193F;
+			remoteInfo = VZAutomation;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		05AAFCF72C811F1D00DE7819 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		05AAFCF92C811F4900DE7819 /* README.md */ = {isa = PBXFileReference; explicitFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		05E432012C6EB40B002F193F /* VZAutomation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VZAutomation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		05E432292C6EFE98002F193F /* VZAutomationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VZAutomationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		05E432032C6EB40B002F193F /* VZAutomation */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = VZAutomation; sourceTree = "<group>"; };
+		05E4322A2C6EFE98002F193F /* VZAutomationTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = VZAutomationTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		05E431FE2C6EB40B002F193F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05E432262C6EFE98002F193F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -28,7 +54,10 @@
 		05E431F82C6EB40B002F193F = {
 			isa = PBXGroup;
 			children = (
+				05AAFCF92C811F4900DE7819 /* README.md */,
+				05AAFCF72C811F1D00DE7819 /* LICENSE */,
 				05E432032C6EB40B002F193F /* VZAutomation */,
+				05E4322A2C6EFE98002F193F /* VZAutomationTests */,
 				05E432022C6EB40B002F193F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -37,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				05E432012C6EB40B002F193F /* VZAutomation.app */,
+				05E432292C6EFE98002F193F /* VZAutomationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,6 +96,29 @@
 			productReference = 05E432012C6EB40B002F193F /* VZAutomation.app */;
 			productType = "com.apple.product-type.application";
 		};
+		05E432282C6EFE98002F193F /* VZAutomationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05E4322F2C6EFE98002F193F /* Build configuration list for PBXNativeTarget "VZAutomationTests" */;
+			buildPhases = (
+				05E432252C6EFE98002F193F /* Sources */,
+				05E432262C6EFE98002F193F /* Frameworks */,
+				05E432272C6EFE98002F193F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				05E4322E2C6EFE98002F193F /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				05E4322A2C6EFE98002F193F /* VZAutomationTests */,
+			);
+			name = VZAutomationTests;
+			packageProductDependencies = (
+			);
+			productName = VZAutomationTests;
+			productReference = 05E432292C6EFE98002F193F /* VZAutomationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -78,6 +131,10 @@
 				TargetAttributes = {
 					05E432002C6EB40B002F193F = {
 						CreatedOnToolsVersion = 16.0;
+					};
+					05E432282C6EFE98002F193F = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 05E432002C6EB40B002F193F;
 					};
 				};
 			};
@@ -95,12 +152,22 @@
 			projectRoot = "";
 			targets = (
 				05E432002C6EB40B002F193F /* VZAutomation */,
+				05E432282C6EFE98002F193F /* VZAutomationTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		05E431FF2C6EB40B002F193F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05AAFCF82C811F1E00DE7819 /* LICENSE in Resources */,
+				05AAFCFA2C811F4C00DE7819 /* README.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05E432272C6EFE98002F193F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -117,7 +184,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		05E432252C6EFE98002F193F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		05E4322E2C6EFE98002F193F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 05E432002C6EB40B002F193F /* VZAutomation */;
+			targetProxy = 05E4322D2C6EFE98002F193F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		05E4320E2C6EB40C002F193F /* Debug */ = {
@@ -244,12 +326,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = VZAutomation/VZAutomation.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"VZAutomation/Preview Content\"";
 				DEVELOPMENT_TEAM = Z45MF6H6EL;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -271,12 +354,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = VZAutomation/VZAutomation.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"VZAutomation/Preview Content\"";
 				DEVELOPMENT_TEAM = Z45MF6H6EL;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -289,6 +373,40 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		05E432302C6EFE98002F193F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z45MF6H6EL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.cryptica.VZAutomationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VZAutomation.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VZAutomation";
+			};
+			name = Debug;
+		};
+		05E432312C6EFE98002F193F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z45MF6H6EL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.cryptica.VZAutomationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VZAutomation.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VZAutomation";
 			};
 			name = Release;
 		};
@@ -309,6 +427,15 @@
 			buildConfigurations = (
 				05E432112C6EB40C002F193F /* Debug */,
 				05E432122C6EB40C002F193F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		05E4322F2C6EFE98002F193F /* Build configuration list for PBXNativeTarget "VZAutomationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05E432302C6EFE98002F193F /* Debug */,
+				05E432312C6EFE98002F193F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
