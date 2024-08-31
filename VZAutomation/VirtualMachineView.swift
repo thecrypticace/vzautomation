@@ -46,6 +46,35 @@ class VMView: VZVirtualMachineView {
     print("keyUp \(event)")
   }
 
+  override func mouseMoved(with event: NSEvent) {
+    super.mouseMoved(with: event)
+
+    guard let frameBufferView = subviews.first else {
+      return
+    }
+
+    guard let displayResolution = virtualMachine?.graphicsDevices.first?.displays.first?.sizeInPixels else {
+      return
+    }
+
+    // Get the point relative to the frame buffer's frame
+    let windowRelativePoint = event.locationInWindow
+    let bufferRelativePoint = frameBufferView.convert(
+      windowRelativePoint,
+      from: nil
+    )
+
+    let frameBufferSize = frameBufferView.frame.size
+
+    // Rescale this coordinate to be relative to the VM's display
+    let displayRelativePoint = CGPoint(
+      x: bufferRelativePoint.x / frameBufferSize.width * displayResolution.width,
+      y: bufferRelativePoint.y / frameBufferSize.height * displayResolution.height
+    )
+
+    print("mouse moved to: \(displayRelativePoint)")
+  }
+
   override func mouseEntered(with event: NSEvent) {
     super.mouseEntered(with: event)
 
