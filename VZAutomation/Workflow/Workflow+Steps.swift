@@ -19,7 +19,7 @@ extension VZWorkflow {
 final class Step: Identifiable {
   enum State {
     case idle
-    case waiting
+    case running
     case done
     case error
   }

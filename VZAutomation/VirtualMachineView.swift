@@ -11,7 +11,6 @@ import Virtualization
 
 struct VirtualMachineView: NSViewRepresentable {
   let vm: VirtualMachine
-  let expanded: Bool
 
   func makeNSView(context: Context) -> VZVirtualMachineView {
     let view = vm.view
@@ -48,14 +47,14 @@ class VMView: VZVirtualMachineView {
   }
 
   override func mouseEntered(with event: NSEvent) {
-    print("mouse entered")
-
     super.mouseEntered(with: event)
+
+    print("mouse entered")
   }
 
   override func mouseExited(with event: NSEvent) {
-    print("mouse exited")
-
     super.mouseExited(with: event)
+
+    print("mouse exited")
   }
 }

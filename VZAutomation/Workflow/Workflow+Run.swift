@@ -13,12 +13,13 @@ extension VZAutomator {
 
 extension VZWorkflow {
   fileprivate func step(_ id: String, callback: () async throws -> Void) async throws {
-    update(step: id, state: .waiting)
+    update(step: id, state: .running)
     do {
       try await callback()
       update(step: id, state: .done)
     } catch {
       update(step: id, state: .error)
+      throw error
     }
   }
 
