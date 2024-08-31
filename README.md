@@ -99,7 +99,7 @@ if try await automator.has(text: "keyboard requirements") {
 }
 ```
 
-## Waiting a specific image to appear on screen
+## Waiting for an image to appear on screen
 
 **This is a work in progress API**.
 
