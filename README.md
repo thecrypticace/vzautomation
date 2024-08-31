@@ -101,13 +101,18 @@ if try await automator.has(text: "keyboard requirements") {
 
 ## Waiting a specific image to appear on screen
 
-**This does not work yet (I think)**.
+**This is a work in progress API**.
 
-This work is in progress and extremely experimental but the intended usage will eventually be to use `automator.wait(forImage:)` to wait for an image to appear on the screen.
+You may use the `automator.wait(forImage: myImage, at: somePoint)` API to detect an image on the screen at a specific location. There is also an API to determine if an image is currently on screen (at a location) or not. For now the coordinates are such that +Y points in the up direction — matching the macOS coordinate system. This is likely to change to be +Y points down.
 
 ```swift
-// Wait for the image to appear on the screen
-try await automator.wait(forImage: myImage)
+// Wait for the image to appear on the screen at (915, 682)
+try await automator.wait(forImage: myImage, at: CGPoint(x: 915, y: 682))
+
+// Do something if the image exists on screen at (381, 293)
+if try await automator.has(image: myImage, at: CGPoint(x: 381, y: 293)) {
+  // Do something
+}
 ```
 
 ## Taking a screenshot of the framebuffer

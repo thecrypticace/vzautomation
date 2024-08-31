@@ -5,6 +5,8 @@
 //  Created by Jordan Pittman on 8/25/24.
 //
 
+import AppKit
+
 extension VZAutomator {
   func run(workflow: VZWorkflow) async throws {
     try await workflow.run(automator: self)
@@ -47,7 +49,8 @@ extension VZWorkflow {
     try await screenshot(automator: automator)
 
     try await step("language") {
-      try await automator.wait(forText: .all(["language", "english", "english (uk)"]))
+      try await automator.wait(forImage: NSImage.globe, at: .init(x: 915, y: 682))
+
       try await automator.press(key: .keyboardTab)
       try await automator.press(key: .keyboardReturn)
 

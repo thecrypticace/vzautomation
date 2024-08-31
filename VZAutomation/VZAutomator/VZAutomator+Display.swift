@@ -77,43 +77,77 @@ extension VZAutomator {
 
 // MARK: - Detecting images on the display
 extension VZAutomator {
+  enum ImageError: Error {
+    case unableToFeaturePrint
+  }
+
   /// Wait for an image to be displayed
-  public func wait(forImage image: CGImage, in rect: CGRect) async throws {
+  @MainActor
+  public func wait(forImage image: NSImage, at point: CGPoint) async throws {
+    let image = NSImage.globe.cgImage(forProposedRect: nil, context: nil, hints: nil)!
+
+    try await wait(forImage: image, at: point)
+  }
+
+  /// Wait for an image to be displayed
+  public func wait(forImage image: CGImage, at point: CGPoint) async throws {
+    let rect = rect(for: image, at: point)
+
+    try await wait(forImage: image, in: rect)
+  }
+
+  /// Wait for an image to be displayed
+  private func wait(forImage image: CGImage, in rect: CGRect) async throws {
+    let targetPrint = try await featurePrint(for: CIImage(cgImage: image))
+
     try await wait {
-      try await detect(image: image, in: rect)
+      try await has(print: targetPrint, in: rect)
     }
   }
 
-  /// Detect the location of a specific image on the display
-  public func detect(image: CGImage, at point: CGPoint) async throws -> Bool {
-    try await detect(image: image, in: .init(x: point.x, y: point.y, width: CGFloat(image.width), height: CGFloat(image.height)))
+  /// Determine if the given image is on screen at the given location
+  public func has(image: CGImage, at point: CGPoint) async throws -> Bool {
+    let rect = rect(for: image, at: point)
+    let targetPrint = try await featurePrint(for: CIImage(cgImage: image))
+
+    return try await has(print: targetPrint, in: rect)
   }
 
-  /// Detect the location of a specific image on the display
-  public func detect(image: CGImage, in rect: CGRect) async throws -> Bool {
-    let target = CIImage(cgImage: image)
-    guard let targetPrint = try await featurePrint(for: target) else { return false }
+  private func rect(for image: CGImage, at point: CGPoint) -> CGRect {
+    CGRect(
+      x: point.x,
+      y: point.y,
+      width: CGFloat(image.width),
+      height: CGFloat(image.height)
+    )
+  }
 
-    var found = false
+  /// Determine if the given rectangle has a close enough feature preint
+  private func has(print: VNFeaturePrintObservation, in rect: CGRect) async throws -> Bool {
+    var distance: Float = .infinity
 
     try await withSurface { surface in
       let display = CIImage(ioSurface: surface).cropped(to: rect)
-      guard let displayPrint = try await featurePrint(for: display) else { return }
+      let displayPrint = try await featurePrint(for: display)
 
-      var distance: Float = 0
-      try displayPrint.computeDistance(&distance, to: targetPrint)
-
-      found = distance < 2.0
+      try displayPrint.computeDistance(&distance, to: print)
     }
 
-    return found
+    return distance < 0.1
   }
 
-  private func featurePrint(for image: CIImage) async throws -> VNFeaturePrintObservation? {
+  private func featurePrint(for image: CIImage) async throws -> VNFeaturePrintObservation {
     let requestHandler = VNImageRequestHandler(ciImage: image, options: [:])
     let req = VNGenerateImageFeaturePrintRequest()
     try requestHandler.perform([req])
-    return req.results?.first as? VNFeaturePrintObservation
+
+    let print = req.results?.first as? VNFeaturePrintObservation
+
+    guard let print else {
+      throw ImageError.unableToFeaturePrint
+    }
+
+    return print
   }
 }
 
